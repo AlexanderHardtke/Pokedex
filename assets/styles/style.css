@@ -1,0 +1,31 @@
+h1 {
+    text-align: center;
+    color: white;
+}
+
+    /* background-color: #f01e27; */
+
+body {
+    margin: 0;
+    scroll-behavior: smooth;
+    background-color: #01033c;
+}
+
+#content {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 8px;
+}
+
+.pokeBox {
+    border: 1px solid white;
+    border-radius: 16px;
+    color: white;
+    width: 100px;
+    height: 150px;
+    margin: 4px;
+}
+
+.pokeGIF {
+    height: 40px;
+}
