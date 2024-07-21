@@ -11,7 +11,6 @@ function init() {
 }
 
 function render(pokemon, i) {
-    console.log(pokemon);
     let pokeName = pokemon['name'];
     renderPokemon(pokeName, i);
 }
@@ -19,8 +18,12 @@ function render(pokemon, i) {
 function renderPokemon(name, i) {
     document.getElementById('content').innerHTML += /*html*/`
     <div class="pokeBox">
-        <div class="name">${name}</div>
-        <img class="pokeGIF" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${i}.gif">
+        <div class="dFlexColumn">
+            <h2 class="name">#${i} ${name}</h2>
+            <img class="pokeGIF" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${i}.gif">
+        </div>
     </div>
         `
 }
+
+// To-Dos:Nur ca 20 Pokemon laden, dann lade Mehr Button, Farbe von Karte nach Typ spezifizieren, beim Öffnen: stats, Entwicklung, nächstes Pokemon, PokedexOG,, 

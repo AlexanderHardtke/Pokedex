@@ -1,0 +1,24 @@
+/* vt323-regular - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'VT323';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/vt323-v17-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Pokemon Solid';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/Pokemon Solid.ttf'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Pokemon Hollow';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/Pokemon\ Hollow.ttf'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }

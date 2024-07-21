@@ -1,8 +1,15 @@
 h1 {
     text-align: center;
     color: white;
+    font-family: Pokemon Hollow;
 }
 
+h2 {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 0;
+    text-transform: capitalize;
+}
     /* background-color: #f01e27; */
 
 body {
@@ -18,14 +25,29 @@ body {
 }
 
 .pokeBox {
+    display: flex;
+    flex-direction: column;
     border: 1px solid white;
-    border-radius: 16px;
+    border-radius: 6px;
     color: white;
     width: 100px;
     height: 150px;
     margin: 4px;
+    padding: 8px;
+    background-color: #fae439;
+    cursor: pointer;
+    font-family: VT323;
 }
 
 .pokeGIF {
-    height: 40px;
+    height: 52px;
+    align-self: center;
+    object-fit: cover;
+    max-width: 100px;
+}
+
+.dFlexColumn {
+    display: flex;
+    flex-direction: column;
+    background-color: black; /*/ spaceholder/*/
 }
