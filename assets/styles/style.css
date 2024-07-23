@@ -1,3 +1,12 @@
+body {
+    margin: 0;
+    scroll-behavior: smooth;
+    background-color: #01033c;
+    margin-left: 80px;
+    margin-right: 80px;
+    font-size: 18px;
+}
+
 h1 {
     text-align: center;
     color: #ffcd05;
@@ -9,15 +18,15 @@ h1 {
 
 h2 {
     text-align: center;
-    font-size: 16px;
+    font-size: 20px;
     margin-top: 0;
     text-transform: capitalize;
 }
 
-body {
-    margin: 0;
-    scroll-behavior: smooth;
-    background-color: #01033c;
+h3 {
+    position: relative;
+    top: -40px;
+    font-size: 26px;
 }
 
 #content {
@@ -31,7 +40,6 @@ body {
     flex-direction: column;
     border: 1px solid white;
     border-radius: 6px;
-    color: white;
     width: 156px;
     height: 240px;
     margin: 4px;
@@ -94,6 +102,28 @@ body {
     flex-direction: column;
     padding-left: 18px;
     padding-bottom: 6px;
-    bottom: -15px;
+    bottom: -8px;
     position: relative;
+}
+
+.loadButton {
+    width: 200px;
+    height: 62px;
+    color: #ffcd05;
+    background-color: black;
+    font-family: Pokemon Solid;
+    text-shadow: -3px -1px 0 #3a5aa6, 3px -1px 0 #3a5aa6, -3px 1px 0 #3a5aa6, 3px 1px 0 #3a5aa6;
+    border-radius: 50px;
+}
+
+.loadButton:hover {
+    box-shadow: rgba(255, 255, 255, .3) 0 3px 15px inset, rgba(0, 0, 0, .1) 0 3px 5px, rgba(0, 0, 0, .1) 0 10px 13px;
+}
+
+.buttonBox {
+    width: 100%;
+    order: 152;
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
 }

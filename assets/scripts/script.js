@@ -1,4 +1,4 @@
-const colours = {
+const colors = {
 	normal: '#A8A77A',
 	fire: '#EE8130',
 	water: '#6390F0',
@@ -8,27 +8,27 @@ const colours = {
 	fighting: '#C22E28',
 	poison: '#A33EA1',
 	ground: '#E2BF65',
-	flying: '#A98FF3',
 	psychic: '#F95587',
 	bug: '#A6B91A',
 	rock: '#B6A136',
 	ghost: '#735797',
 	dragon: '#6F35FC',
-	dark: '#705746',
-	steel: '#B7B7CE',
 	fairy: '#D685AD',
 };
 
-async function fetchDataPokeAPI() {
-    for (let i = 1; i < 151; i++) {
-        let response = await fetch("https://pokeapi.co/api/v2/pokemon/" + i)
+let index = 0;
+
+async function fetchPokeAPI(index) {
+    for (let i = 1; i < 31; i++) {
+        let realIndex = index + i;
+        let response = await fetch("https://pokeapi.co/api/v2/pokemon/" + realIndex)
         let pokemon = await response.json();
-        render(pokemon, i);
+        render(pokemon, realIndex);
     }
 }
 
 function init() {
-    fetchDataPokeAPI();
+    fetchPokeAPI(index);
 }
 
 function render(pokemon) {
@@ -66,49 +66,18 @@ function renderPokemon(i, type1, type2, weight, height) {
 
 function colorCard(card, i) {
     let color = i['name'];
-    let colorcode;
-    switch (color) {
-        case "fire", "dragon":
-            colorcode = "#f26e57";
-            break;
-        case "grass", "bug":
-            colorcode = "#9acc50";
-            break;
-        case "water":
-            colorcode = "#f266b8";
-            break;
-        case "poison":
-            colorcode = "#b97fc9";
-            break;
-        case "electric":
-            colorcode = "#edd434";
-            break;
-        case "ground":
-            colorcode = "#f7df40";
-            break;
-        case "fairy":
-            colorcode = "#fcb8e8";
-            break;
-        case "fighting":
-            colorcode = "#d66722";
-            break;
-        case "psychic":
-            colorcode = "#f266b8";
-            break;
-        case "rock":
-            colorcode = "#a38b21";
-            break;
-        case "ghost":
-            colorcode = "#7b62a3";
-            break;
-        case "ice":
-            colorcode = "#b97fc9";
-            break;
-        default:
-            colorcode = "#a5adb0";
-            break;
+    let colorCode = colors[color];
+    document.getElementById(`card${card['id']}`).style.backgroundColor = colorCode;
+}
+
+function moreButton() {   
+    index += 30;
+    if (index == 120){
+        document.getElementById('buttonBox').innerHTML = /*html*/`
+        `
     }
-    document.getElementById(`card${card['id']}`).style.backgroundColor = colorcode;
+    fetchPokeAPI(index)
+
 }
 
 function showPokedex() {
@@ -118,4 +87,4 @@ function showPokedex() {
 function hidePokedex() {
     document.getElementById('pokeOverlay').classList.remove('showPokeOverlay');
 }
-// To-Dos:Nur ca 20 Pokemon laden, dann lade Mehr Button, Farbe von Karte nach Typ spezifizieren, beim Öffnen: stats, Entwicklung, nächstes Pokemon, PokedexOG,, 
+// beim Öffnen: stats, Entwicklung, nächstes Pokemon, PokedexOG, Suchfunktion, 
