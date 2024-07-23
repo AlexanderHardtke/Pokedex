@@ -1,0 +1,183 @@
+#overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.pokedexLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    z-index: 2;
+    background-image: linear-gradient(to bottom right, rgb(227, 27, 31), rgb(222, 62, 62));
+    width: 80%;
+    max-width: 400px;
+    aspect-ratio: 5.5 / 8;
+    border: solid 6px #000000;
+}
+
+.pokedexMid {
+    background-color: rgb(98, 12, 13);
+    width: 2.5%;
+    height: 75%;
+    border: 2mm ridge rgba(98, 12, 13, .6);
+}
+
+.pokedexRight {
+    z-index: 2;
+    background-image: linear-gradient(to bottom right, rgb(227, 27, 31), rgb(222, 62, 62));
+    width: 80%;
+    max-width: 400px;
+    aspect-ratio: 5.5 / 8;
+    border: solid 6px #000000;
+}
+
+.alarmButtons {
+    display: flex;
+    align-self: flex-start;
+    margin-left: 14px;
+}
+
+.glowing-circle {
+    width: 80px;
+    height: 80px;
+    background-image: linear-gradient(to bottom right, rgb(51, 153, 204), rgb(100, 225, 222));
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+    border: 12px solid #fff;
+    margin-right: 12px;
+}
+
+@keyframes pulse {
+    21% {
+        box-shadow: 0 0 20px rgba(0, 155, 212, 0.8),
+            0 0 40px rgba(0, 155, 212, 0.6),
+            0 0 60px rgba(0, 155, 212, 0.4);
+        background-image: linear-gradient(to bottom right, rgba(0, 155, 212, 0.8), rgba(100, 225, 222, 0.8));
+    }
+
+    42% {
+        box-shadow: 0 0 20px rgba(172, 250, 225, 0.8),
+            0 0 40px rgba(172, 250, 225, 0.6),
+            0 0 60px rgba(172, 250, 225, 0.4);
+        background-image: linear-gradient(to bottom right, rgba(100, 225, 222, 0.9), rgba(100, 225, 222, 0.8));
+    }
+
+    65% {
+        box-shadow: 0 0 20px rgba(225, 250, 225, 0.8),
+            0 0 40px rgba(225, 250, 225, 0.6),
+            0 0 60px rgba(225, 250, 225, 0.4);
+        background-image: linear-gradient(to bottom right, rgba(109, 245, 245, 0.9), rgba(100, 245, 245, 0.8));
+    }
+}
+
+.roundButton {
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.red {
+    background-image: linear-gradient(to bottom right, rgb(196, 81, 91), rgb(215, 87, 87));
+}
+
+.yellow {
+    background-image: linear-gradient(to bottom right, rgb(232, 169, 102), rgb(235, 194, 150));
+}
+
+.green {
+    background-image: linear-gradient(to bottom right, rgb(62, 79, 51), rgb(104, 164, 65));
+}
+
+.screen {
+    height: 170px;
+    width: 208px;
+    border-radius: 1% 1% 1% 40px;
+    border: solid 20px rgb(205, 209, 208);
+    border-bottom: solid 40px rgb(205, 209, 208);
+}
+
+.controlButtons {
+    display: flex;
+    margin-top: 10px;
+}
+
+.backExitButton {
+    cursor: pointer;
+    position: relative;
+    top: -36px;
+    right: 40px;
+    background-image: linear-gradient(to bottom right, rgb(0, 0, 0), rgb(97, 97, 97));
+    height: 34px;
+    width: 34px;
+    border-radius: 50%;
+}
+
+.dPad div {
+    position: absolute;
+    background-color: #333;
+    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.dPad :hover {
+    box-shadow: 2px 2px 0px 0px;
+}
+
+.dPad {
+    position: relative;
+    top: -20px;
+    left: 32px;
+    width: 100px;
+    height: 100px;
+}
+
+.dPadUp {
+    top: 0;
+    width: 40px;
+    height: 30px;
+    left: 30px;
+}
+.dPadDown {
+    bottom: 0;
+    width: 40px;
+    height: 30px;
+    left: 30px;
+}
+.dPadLeft {
+    width: 30px;
+    height: 40px;
+    top: 30px;
+    left: 0;
+}
+.dPadRight {
+    width: 30px;
+    height: 40px;
+    top: 30px;
+    right: 0;
+}
+.dPadCenter {
+    background-color: #202020 !important;
+    width: 40px;
+    height: 40px;
+    top: 30px;
+    left: 30px;
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.greenInfoBox {
+    width: 140px;
+    height: 80px;
+    background-color: rgb(51, 204, 102);
+    border-radius: 12px;
+}

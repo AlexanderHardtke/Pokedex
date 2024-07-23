@@ -48,7 +48,7 @@ function formatDecimals(i) {
 function renderPokemon(i, type1, type2, weight, height) {
     document.getElementById('content').innerHTML += /*html*/`
     <div class="pokeBox">
-        <div class="card" id="card${i['id']}">
+        <div class="card" id="card${i['id']}" onclick="openPokedex(${i['id']})">
             <h2 class="name">#${i['id']} ${i['name']}</h2>
             <img class="pokeGIF" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${i['id']}.gif">
             <div class="types">
@@ -80,11 +80,15 @@ function moreButton() {
 
 }
 
+function openPokedex(i) {
+    showPokedex()
+}
+
 function showPokedex() {
-    document.getElementById('pokeOverlay').classList.add('showPokeOverlay');
+    document.getElementById('overlay').classList.add('showPokeOverlay');
 }
 
 function hidePokedex() {
-    document.getElementById('pokeOverlay').classList.remove('showPokeOverlay');
+    document.getElementById('overlay').classList.remove('showPokeOverlay');
 }
 // beim Öffnen: stats, Entwicklung, nächstes Pokemon, PokedexOG, Suchfunktion, 
