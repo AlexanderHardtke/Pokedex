@@ -7,6 +7,7 @@
     <title>Pokedex Red/Blue</title>
     <link rel="icon" type="image/x-icon" href="./assets/img/pokemon-spinner.png">
     <link rel="stylesheet" href="./assets/styles/style.css">
+    <link rel="stylesheet" href="./assets/styles/pokedex.css">
     <link rel="stylesheet" href="./assets/styles/responsive.css">
     <link rel="stylesheet" href="./assets/styles/fonts.css">
     <script src="./assets/scripts/script.js"></script>
@@ -21,9 +22,78 @@
             <div id="buttonBox" class="buttonBox"><button class="loadButton" onclick="moreButton()"><h3>Load More</h3></button></div>
         </div>
 
-        <div id="overlay">
-            
-        </div>
+        <section onclick="hidePokedex()" class="overlay" id="overlay">
+
+            <div class="pokedexLeft">
+    
+                <div class="alarmButtons">
+                    <div class="glowing-circle"></div>
+                    <div class="roundButton red"></div>
+                    <div class="roundButton yellow"></div>
+                    <div class="roundButton green"></div>
+                </div>
+    
+                <div id="screen" class="screen"></div>
+    
+                <div class="controlButtons">
+                    <div id="backExitButton" class="backExitButton" onclick="hidePokedex()">Esc</div>
+    
+                    <div id="greenInfoBox" class="greenInfoBox"></div>
+    
+                    <div class="dPad">
+                        <div class="dPadUp"></div>
+                        <div class="dPadDown"></div>
+                        <div class="dPadLeft"></div>
+                        <div class="dPadRight"></div>
+                        <div class="dPadCenter"></div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="pokedexMid"></div>
+    
+            <div class="pokedexRight">
+    
+                <div id="blackInfoBox" class="blackInfoBox"></div>
+    
+                <div class="solarPanel">
+                    <div class="solar"></div>
+                    <div class="solar"></div>
+                    <div class="solar"></div>
+                    <div class="solar"></div>
+                    <div class="solar"></div>
+                    <div class="solar"></div>
+                    <div class="solar"></div>
+                    <div class="solar"></div>
+                    <div class="solar"></div>
+                    <div class="solar"></div>
+                </div>
+    
+                <div class="cosmeticButtons">
+                    <div class="cosmeticDiv">
+                        <div class="fakeButton"></div>
+                        <div class="fakeButton"></div>
+                    </div>
+                    <div class="cosmeticDiv">
+                        <div class="grayRectangle"></div>
+                        <div class="grayRectangle"></div>
+                    </div>
+                    <div class="cosmeticDiv">
+                        <div class="whiteSquare"></div>
+                        <div class="whiteSquare"></div>
+                    </div>
+                    <div class="cosmeticDiv">
+                        <div class="orangeCircle"></div>
+                    </div>
+                </div>
+    
+                <div class="typeBoxes">
+                    <div id="typeInfoBox1"></div>
+                    <div id="typeInfoBox1"></div>
+                </div>
+            </div>
+    
+        </section>
 
 </body>
 
