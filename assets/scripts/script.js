@@ -92,6 +92,7 @@ async function fetchPokemon(i) {
     colorPokedex(pokemon);
     renderPokedexName(pokemon);
     renderPokedexStats(pokemon);
+    fetchPokeEvolution(pokemon);
 }
 
 function renderPokedexImg(i) {
@@ -111,15 +112,32 @@ function renderPokedexName(i) {
 }
 
 function renderPokedexStats(i) {
-    document.getElementById('blackInfoBox').innerHTML = /*html*/`
-    <p>Stats:</p>
-    <p>${i.stats[0].base_stat}</p>
-    <p>${i.stats[1].base_stat}</p>
-    <p>${i.stats[2].base_stat}</p>
-    <p>${i.stats[3].base_stat}</p>
-    <p>${i.stats[4].base_stat}</p>
-    <p>${i.stats[5].base_stat}</p>
-`
+    document.getElementById('barBox').innerHTML = /*html*/`
+    <div>Stats:</div>
+    <div class="bar" style="height: ${i.stats[0].base_stat}%;" stat="${i.stats[0].base_stat}">HP<br></div>
+    <div class="bar" style="height: ${i.stats[1].base_stat}%;" stat="${i.stats[1].base_stat}">ATK<br></div>
+    <div class="bar" style="height: ${i.stats[2].base_stat}%;" stat="${i.stats[2].base_stat}">DEF<br></div>
+    <div class="bar" style="height: ${i.stats[3].base_stat}%;" stat="${i.stats[3].base_stat}">SpA<br></div>
+    <div class="bar" style="height: ${i.stats[4].base_stat}%;" stat="${i.stats[4].base_stat}">SpD<br></div>
+    <div class="bar" style="height: ${i.stats[5].base_stat}%;" stat="${i.stats[5].base_stat}">SPE<br></div>
+    `
+}
+
+async function fetchPokeEvolution(i) {
+    let index = i['id'];
+    let response = await fetch("https://pokeapi.co/api/v2/evolution-chain/" + index)
+    let evolution = await response.json();
+    renderEvolutions(evolution, index);
+}
+
+function renderEvolutions(evolution, i) {
+    console.log(evolution);
+    document.getElementById('evolutionInfoBox1').innerHTML = /*html*/`
+        <div></div>
+    `
+    document.getElementById('evolutionInfoBox2').innerHTML = /*html*/`
+        <div></div>
+    `
 }
 
 function colorPokedex(i) {
@@ -138,4 +156,3 @@ function hidePokedex() {
         document.getElementById('overlay').classList.remove('showPokeOverlay');
     }
 }
-// beim Öffnen: stats, Entwicklung, nächstes Pokemon, Suchfunktion, 

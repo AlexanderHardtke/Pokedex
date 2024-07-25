@@ -16,6 +16,7 @@
 <body onload="init()">
 
     <h1>First Generation Pokedex</h1>
+
     <input id="search" type="search" placeholder="Suche Pokemon">
 
         <div id="content">
@@ -54,8 +55,10 @@
     
             <div class="pokedexRight">
     
-                <div id="blackInfoBox" class="blackInfoBox"></div>
-    
+                <div id="blackInfoBox" class="blackInfoBox">
+                    <div id="barBox" class="barBox"></div>
+                </div>
+                
                 <div class="solarPanel">
                     <div class="solar"></div>
                     <div class="solar"></div>
@@ -88,8 +91,8 @@
                 </div>
     
                 <div class="typeBoxes">
-                    <div id="typeInfoBox1"></div>
-                    <div id="typeInfoBox1"></div>
+                    <div class="evolutionInfoBox" id="evolutionInfoBox1" onclick="nextPokemon()"></div>
+                    <div class="evolutionInfoBox" id="evolutionInfoBox2" onclick="lastPokemon()"></div>
                 </div>
             </div>
     
