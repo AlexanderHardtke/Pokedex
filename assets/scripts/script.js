@@ -19,16 +19,26 @@ const colors = {
 let index = 0;
 
 async function fetchPokeAPI(index) {
+    showLoadingSpinner();
     for (let i = 1; i < 31; i++) {
         let realIndex = index + i;
         let response = await fetch("https://pokeapi.co/api/v2/pokemon/" + realIndex)
         let pokemon = await response.json();
         render(pokemon, realIndex);
     }
+    hideLoadingSpinner();
 }
 
 function init() {
     fetchPokeAPI(index);
+}
+
+function showLoadingSpinner() {
+    document.getElementById('loadingSpinner').classList.add('showPokeOverlay');
+}
+
+function hideLoadingSpinner() {
+    document.getElementById('loadingSpinner').classList.remove('showPokeOverlay');
 }
 
 function render(pokemon) {
@@ -156,3 +166,5 @@ function hidePokedex() {
         document.getElementById('overlay').classList.remove('showPokeOverlay');
     }
 }
+
+// Filter-Funktion(Suche), Language maybe
