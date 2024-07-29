@@ -377,3 +377,8 @@ p {
     background-color: rgb(255, 165, 0);
     background-image: linear-gradient(to bottom right, rgb(255, 165, 0), rgb(255, 222, 160));
 }
+
+.evolutionBox {
+    width: 33%;
+    margin-bottom: 12px;
+}

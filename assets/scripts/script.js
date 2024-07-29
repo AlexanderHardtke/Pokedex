@@ -87,7 +87,6 @@ function moreButton() {
         `
     }
     fetchPokeAPI(index)
-
 }
 
 function openPokedex(i) {
@@ -102,7 +101,7 @@ async function fetchPokemon(i) {
     colorPokedex(pokemon);
     renderPokedexName(pokemon);
     renderPokedexStats(pokemon);
-    fetchPokeEvolution(pokemon);
+    renderInfoButtons(i);
 }
 
 function renderPokedexImg(i) {
@@ -133,23 +132,6 @@ function renderPokedexStats(i) {
     `
 }
 
-async function fetchPokeEvolution(i) {
-    let index = i['id'];
-    let response = await fetch("https://pokeapi.co/api/v2/evolution-chain/" + index)
-    let evolution = await response.json();
-    renderEvolutions(evolution, index);
-}
-
-function renderEvolutions(evolution, i) {
-    console.log(evolution);
-    document.getElementById('evolutionInfoBox1').innerHTML = /*html*/`
-        <div></div>
-    `
-    document.getElementById('evolutionInfoBox2').innerHTML = /*html*/`
-        <div></div>
-    `
-}
-
 function colorPokedex(i) {
     let type = i.types[0].type;
     let color = type['name'];
@@ -166,5 +148,88 @@ function hidePokedex() {
         document.getElementById('overlay').classList.remove('showPokeOverlay');
     }
 }
+
+function renderInfoButtons(i) {
+    document.getElementById('evolutionButton').setAttribute('onclick', 'showEvolutions(' + i + ')');
+}
+
+function showEvolutions(i) {
+    fetchPokeEvolution(i);
+}
+
+async function fetchPokeEvolution(i) {
+    let responseSpecies = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${i}`);
+    let species = await responseSpecies.json();
+    let evolutionURL = species.evolution_chain.url;
+    let evolution = await fetch(evolutionURL);
+    let evolutionChain = await evolution.json();
+    fetchEvolvedPokemons(evolutionChain);
+}
+
+async function fetchEvolvedPokemons(i) {
+    let urls = [
+        i.chain.species.url,
+        i.chain.evolves_to[0] ? i.chain.evolves_to[0].species.url : null,
+        i.chain.evolves_to[0] && i.chain.evolves_to[0].evolves_to[0] ? i.chain.evolves_to[0].evolves_to[0].species.url : null
+    ];
+    document.getElementById('barBox').innerHTML = ``;
+    for (let i = 0; i < urls.length; i++) {
+        try {
+            let response = await fetch("https://pokeapi.co/api/v2/pokemon/" + extractNumberFromUrl(urls[i]));
+            let pokemon = await response.json();
+            renderEvolution(pokemon);
+        } catch (error) {
+            console.error('Fetch error:', error);
+        }
+    }
+}
+
+
+// function extractNumberFromUrl(url) {
+//     const parts = url.split('/').filter(Boolean);
+//     const number = parts[parts.length - 1];
+//     return number;
+// }
+
+function extractNumberFromUrl(url) {
+    let match = url.match(/\/(\d+)\//);
+    return match ? match[1] : null;
+}
+
+function renderEvolution(pokemon) {
+    document.getElementById('barBox').innerHTML += /*html*/`
+        <div class="evolutionBox"><img src="${pokemon.sprites.front_default}"></div>
+    `
+}
+
+// if (!evolution) {
+//     document.getElementById('blackInfoBox').innerHTML = /*html*/`
+//         Keine Evolution gefunden
+//     `
+// }
+
+// let debounceTimeout;
+// document.getElementById('search').addEventListener('input', function() {
+//     clearTimeout(debounceTimeout);
+//     debounceTimeout = setTimeout(() => {
+//         performSearch(this.value);
+//     }, 300);
+// });
+
+// function performSearch(i) {
+//     if (i.length >= 3) {
+//         const results = Object.keys(colors).filter(color => color.includes(query.toLowerCase()));
+//         results.forEach(result => {
+//             li.textContent = result + ' - ' + colors[result];
+//             resultsContainer.appendChild(li);
+//         });
+
+//         if (results.length === 0) {
+//             const li = document.createElement('li');
+//             li.textContent = 'Keine Ergebnisse gefunden';
+//             resultsContainer.appendChild(li);
+//         }
+//     }
+// }
 
 // Filter-Funktion(Suche), Language maybe

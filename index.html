@@ -23,7 +23,9 @@
             <div id="buttonBox" class="buttonBox"><button class="loadButton" onclick="moreButton()"><h3>Load More</h3></button></div>
         </div>
 
-        <div id="loadingSpinner" class="loadingSpinner"><img class="spinner" src="./assets/img/pokemonSpinner.png"></div>
+        <div id="loadingSpinner" class="loadingSpinner"><img class="spinner" src="./assets/img/pokemonSpinner.png">
+            <div class="spinnerText">Loading ...</div>
+        </div>
 
         <section onclick="hidePokedex()" class="overlay" id="overlay">
 
@@ -94,7 +96,7 @@
     
                 <div class="switchBoxes">
                     <div onclick="seeStats()" class="statChangeBox">Stats</div>
-                    <div onclick="seeEvolution()" class="statChangeBox">Evolution</div>
+                    <div onclick="showEvolutions()" class="statChangeBox" id="evolutionButton">Evolution</div>
                 </div>
             </div>
     

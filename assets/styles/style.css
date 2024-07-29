@@ -124,11 +124,21 @@ h3 {
     display: none;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .spinner {
     height: 50%;
     animation: spin 1s linear infinite;
+}
+
+.spinnerText {
+    margin-top: 16px;
+    font-size: 30px;
+    color: #ffcd05;
+    font-family: Pokemon Solid;
+    text-shadow: -3px -1px 0 #3a5aa6, 3px -1px 0 #3a5aa6, -3px 1px 0 #3a5aa6, 3px 1px 0 #3a5aa6;
+    font-weight: 100;
 }
 
 @keyframes spin {
