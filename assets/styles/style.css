@@ -7,6 +7,17 @@ body {
     font-size: 18px;
 }
 
+.noScroll {
+    overflow: hidden;
+}
+
+.logo {
+    position: absolute;
+    top: 4px;
+    height: 150px;
+    cursor: pointer;
+}
+
 h1 {
     text-align: center;
     color: #ffcd05;
@@ -64,6 +75,10 @@ h3 {
     max-width: 154px;
 }
 
+.pokeGIF:hover {
+    scale: 1.2;
+}
+
 .card {
     display: flex;
     flex-direction: column;
@@ -74,6 +89,10 @@ h3 {
     background-size: 100px 100px, 50px 50px;
     background-blend-mode: overlay;
     background-repeat: repeat;
+}
+
+.card:hover {
+    filter: saturate(2);
 }
 
 .types {

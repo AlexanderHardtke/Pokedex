@@ -1,23 +1,3 @@
-const colors = {
-    normal: '#A8A77A',
-    fire: '#EE8130',
-    water: '#6390F0',
-    electric: '#F7D02C',
-    grass: '#7AC74C',
-    ice: '#96D9D6',
-    fighting: '#C22E28',
-    poison: '#A33EA1',
-    ground: '#E2BF65',
-    psychic: '#F95587',
-    bug: '#A6B91A',
-    rock: '#B6A136',
-    ghost: '#735797',
-    dragon: '#6F35FC',
-    fairy: '#D685AD',
-};
-
-let index = 0;
-
 async function fetchPokeAPI(index) {
     showLoadingSpinner();
     for (let i = 1; i < 31; i++) {
@@ -35,10 +15,12 @@ function init() {
 
 function showLoadingSpinner() {
     document.getElementById('loadingSpinner').classList.add('showPokeOverlay');
+    document.body.classList.add('noScroll');
 }
 
 function hideLoadingSpinner() {
     document.getElementById('loadingSpinner').classList.remove('showPokeOverlay');
+    document.body.classList.remove('noScroll');
 }
 
 function render(pokemon) {
@@ -55,31 +37,6 @@ function formatDecimals(i) {
     return formatDecimals;
 }
 
-function renderPokemon(i, type1, type2, weight, height) {
-    document.getElementById('content').innerHTML += /*html*/`
-    <div class="pokeBox">
-        <div class="card" id="card${i['id']}" onclick="openPokedex(${i['id']})">
-            <h2 class="name">#${i['id']} ${i['name']}</h2>
-            <img class="pokeGIF" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${i['id']}.gif">
-            <div class="types">
-                <div>${type1['name']}</div>
-                <div>${type2['name']}</div>
-            </div>
-            <div class="stats">
-                <div>Weight: ${weight} Kilo</div>
-                <div>Height: ${height} Meter</div>
-            </div>
-        </div>
-    </div>
-        `
-}
-
-function colorCard(card, i) {
-    let color = i['name'];
-    let colorCode = colors[color];
-    document.getElementById(`card${card['id']}`).style.backgroundColor = colorCode;
-}
-
 function moreButton() {
     index += 30;
     if (index == 120) {
@@ -90,8 +47,10 @@ function moreButton() {
 }
 
 function openPokedex(i) {
+    // currentIndex.splice(0, 1, i);// Vielleicht einbauen KA
     showPokedex();
     fetchPokemon(i);
+    renderInfoButtons(i);
 }
 
 async function fetchPokemon(i) {
@@ -101,35 +60,6 @@ async function fetchPokemon(i) {
     colorPokedex(pokemon);
     renderPokedexName(pokemon);
     renderPokedexStats(pokemon);
-    renderInfoButtons(i);
-}
-
-function renderPokedexImg(i) {
-    document.getElementById('screen').innerHTML = /*html*/`
-        <img id="pokeScreen" class="pokeScreen" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${i['id']}.png">
-    `
-}
-
-function renderPokedexName(i) {
-    let type1 = i.types[0].type;
-    let type2 = i.types.length > 1 ? i.types[1].type : { name: "" };
-    document.getElementById('greenInfoBox').innerHTML = /*html*/`
-        <p>${i['name']}</p>
-        <p>${type1['name']}</p>
-        <p>${type2['name']}</p>
-    `
-}
-
-function renderPokedexStats(i) {
-    document.getElementById('barBox').innerHTML = /*html*/`
-    <div>Stats:</div>
-    <div class="bar" style="height: ${i.stats[0].base_stat}%;" stat="${i.stats[0].base_stat}">HP<br></div>
-    <div class="bar" style="height: ${i.stats[1].base_stat}%;" stat="${i.stats[1].base_stat}">ATK<br></div>
-    <div class="bar" style="height: ${i.stats[2].base_stat}%;" stat="${i.stats[2].base_stat}">DEF<br></div>
-    <div class="bar" style="height: ${i.stats[3].base_stat}%;" stat="${i.stats[3].base_stat}">SpA<br></div>
-    <div class="bar" style="height: ${i.stats[4].base_stat}%;" stat="${i.stats[4].base_stat}">SpD<br></div>
-    <div class="bar" style="height: ${i.stats[5].base_stat}%;" stat="${i.stats[5].base_stat}">SPE<br></div>
-    `
 }
 
 function colorPokedex(i) {
@@ -141,20 +71,43 @@ function colorPokedex(i) {
 
 function showPokedex() {
     document.getElementById('overlay').classList.add('showPokeOverlay');
+    document.body.classList.add('noScroll');
 }
 
 function hidePokedex() {
     if (event.target.id === 'overlay' || event.target.id === 'backExitButton') {
         document.getElementById('overlay').classList.remove('showPokeOverlay');
+        document.body.classList.remove('noScroll');
     }
 }
 
 function renderInfoButtons(i) {
+    document.getElementById('statButton').setAttribute('onclick', 'showStats(' + i + ')');
     document.getElementById('evolutionButton').setAttribute('onclick', 'showEvolutions(' + i + ')');
+    document.getElementById('dPadLeft').setAttribute('onclick', 'lastPokemon(' + i + ')');
+    document.getElementById('dPadRight').setAttribute('onclick', 'nextPokemon(' + i + ')');
 }
 
-function showEvolutions(i) {
-    fetchPokeEvolution(i);
+async function showStats(i) {
+    let response = await fetch("https://pokeapi.co/api/v2/pokemon/" + i)
+    let pokemon = await response.json();
+    renderPokedexStats(pokemon);
+}
+
+async function showEvolutions(i) {
+    showLoadingScreen()
+    await fetchPokeEvolution(i);
+    hideLoadingScreen()
+}
+
+function showLoadingScreen() {
+    document.getElementById('loadingScreen').classList.add('showPokeOverlay');
+    document.getElementById('barBox').classList.add('displayNone');
+}
+
+function hideLoadingScreen() {
+    document.getElementById('loadingScreen').classList.remove('showPokeOverlay');
+    document.getElementById('barBox').classList.remove('displayNone');
 }
 
 async function fetchPokeEvolution(i) {
@@ -173,9 +126,9 @@ async function fetchEvolvedPokemons(i) {
         i.chain.evolves_to[0] && i.chain.evolves_to[0].evolves_to[0] ? i.chain.evolves_to[0].evolves_to[0].species.url : null
     ];
     document.getElementById('barBox').innerHTML = ``;
-    for (let i = 0; i < urls.length; i++) {
+    for (let j = 0; j < urls.length; j++) {
         try {
-            let response = await fetch("https://pokeapi.co/api/v2/pokemon/" + extractNumberFromUrl(urls[i]));
+            let response = await fetch("https://pokeapi.co/api/v2/pokemon/" + extractNumberFromUrl(urls[j])); // Fehler abfangen???
             let pokemon = await response.json();
             renderEvolution(pokemon);
         } catch (error) {
@@ -184,29 +137,50 @@ async function fetchEvolvedPokemons(i) {
     }
 }
 
-
-// function extractNumberFromUrl(url) {
-//     const parts = url.split('/').filter(Boolean);
-//     const number = parts[parts.length - 1];
-//     return number;
-// }
-
 function extractNumberFromUrl(url) {
-    let match = url.match(/\/(\d+)\//);
-    return match ? match[1] : null;
+    let parts = url.split('/').filter(Boolean);
+    let number = parts[parts.length - 1];
+    if (number > 150) {
+        return;
+    }
+    return number;
 }
 
-function renderEvolution(pokemon) {
-    document.getElementById('barBox').innerHTML += /*html*/`
-        <div class="evolutionBox"><img src="${pokemon.sprites.front_default}"></div>
-    `
+function nextPokemon(i) {
+    if (i < 150) {
+        i++;
+        openPokedex(i);
+    }
+    else return;
 }
 
-// if (!evolution) {
-//     document.getElementById('blackInfoBox').innerHTML = /*html*/`
-//         Keine Evolution gefunden
-//     `
-// }
+function lastPokemon(i) {
+    if (i > 1) {
+        i--;
+        openPokedex(i);
+    }
+    else return;
+}
+
+function increasePokeScreen() {
+    const image = document.getElementById('pokeScreen');
+    if (currentScale >= 1.5) {
+        currentScale = 1;
+    } else {
+        currentScale += 0.2;
+    }
+    image.style.transform = `scale(${currentScale})`;
+}
+
+function decreasePokeScreen() {
+    const image = document.getElementById('pokeScreen');
+    if (currentScale <= 0.5) {
+        currentScale = 1;
+    } else {
+        currentScale -= 0.2;
+    }
+    image.style.transform = `scale(${currentScale})`;
+}
 
 // let debounceTimeout;
 // document.getElementById('search').addEventListener('input', function() {
