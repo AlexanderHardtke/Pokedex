@@ -18,11 +18,10 @@ const colors = {
 
 let index = 0;
 let currentScale = 1;
-let currentIndex = []; // Aktuelles Pokemon im Index
 
 function renderPokemon(i, type1, type2, weight, height) {
     document.getElementById('content').innerHTML += /*html*/`
-    <div class="pokeBox">
+    <div class="pokeBox" id="${i['name']}">
         <div class="card" id="card${i['id']}" onclick="openPokedex(${i['id']})">
             <h2 class="name">#${i['id']} ${i['name']}</h2>
             <img class="pokeGIF" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${i['id']}.gif">
@@ -37,12 +36,6 @@ function renderPokemon(i, type1, type2, weight, height) {
         </div>
     </div>
         `
-}
-
-function colorCard(card, i) {
-    let color = i['name'];
-    let colorCode = colors[color];
-    document.getElementById(`card${card['id']}`).style.backgroundColor = colorCode;
 }
 
 function renderPokedexImg(i) {
@@ -61,7 +54,7 @@ function renderPokedexName(i) {
     `
 }
 
-function renderPokedexStats(i) {
+function showStats(i) {
     document.getElementById('barBox').innerHTML = /*html*/`
     <div>Stats:</div>
     <div class="bar" style="height: ${i.stats[0].base_stat}%;" stat="${i.stats[0].base_stat}">HP<br></div>
@@ -77,4 +70,11 @@ function renderEvolution(pokemon) {
     document.getElementById('barBox').innerHTML += /*html*/`
         <div class="evolutionBox" onclick="openPokedex(${pokemon.id})"><img src="${pokemon.sprites.front_default}">${pokemon.species.name}</div>
     `
+}
+
+function renderInfoButtons(i) {
+    document.getElementById('statButton').setAttribute('onclick', 'showStats(' + i + ')');
+    document.getElementById('evolutionButton').setAttribute('onclick', 'showEvolutions(' + i + ')');
+    document.getElementById('dPadLeft').setAttribute('onclick', 'lastPokemon(' + i + ')');
+    document.getElementById('dPadRight').setAttribute('onclick', 'nextPokemon(' + i + ')');
 }

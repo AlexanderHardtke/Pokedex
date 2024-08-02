@@ -1,0 +1,45 @@
+@media (max-width:960px) {
+    body {
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+}
+
+@media (max-width:750px) {
+    .logo {
+        display: none;
+    }
+
+    body {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+@media (max-width:500px) {
+    body {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    h1 {
+        font-size: 30px;
+        margin-bottom: -6px;
+        margin-top: 26px;
+    }
+
+    #search {
+        right: 70px;
+    }
+}
+
+@media (max-width:395px) {
+    .pokeBox {
+        width: 118px;
+        height: 192px;
+    }
+
+    #search {
+        right: 60px;
+    }
+}
