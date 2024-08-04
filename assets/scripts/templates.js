@@ -18,6 +18,8 @@ const colors = {
 
 let index = 0;
 let currentScale = 1;
+let hasPlayed = false;
+let beat = new Audio('./assets/sound/opening.mp3')
 
 function renderPokemon(i, type1, type2, weight, height) {
     document.getElementById('content').innerHTML += /*html*/`
@@ -54,7 +56,7 @@ function renderPokedexName(i) {
     `
 }
 
-function showStats(i) {
+function renderPokedexStats(i) {
     document.getElementById('barBox').innerHTML = /*html*/`
     <div>Stats:</div>
     <div class="bar" style="height: ${i.stats[0].base_stat}%;" stat="${i.stats[0].base_stat}">HP<br></div>

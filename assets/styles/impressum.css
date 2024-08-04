@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    scroll-behavior: smooth;
+    font-size: 18px;
+}
+
+.impressum {
+    background-color: #01033c;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    min-height: calc(100vh - 164px);
+    margin: 0!important;
+}
+
+h1 {
+    text-align: center;
+    color: #ffcd05;
+    font-family: Pokemon Solid;
+    background-color: #01033c;
+    text-shadow: -3px -1px 0 #3a5aa6, 3px -1px 0 #3a5aa6, -3px 1px 0 #3a5aa6, 3px 1px 0 #3a5aa6;
+    font-weight: 100;
+}
+
+.logo {
+    position: absolute;
+    top: 4px;
+    left: 12px;
+    height: 150px;
+    cursor: pointer;
+}
+
+.backButton {
+    cursor: pointer;
+    color: #ffcd05;
+    text-decoration: none!important;
+}
+
+footer {
+    background-color: #3550a3;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 30px;
+    height: 80px;
+}
+
+.footerLink {
+    color: #fae439;
+    text-decoration: none;
+    text-shadow: 2px 2px 2px black;
+}

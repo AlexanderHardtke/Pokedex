@@ -13,105 +13,111 @@
 </head>
 
 <body onload="init()">
+    <main>
+        <a href="index.html"><img src="./assets/img/logo1.png" class="logo"></a>
 
-    <a href="index.html"><img src="./assets/img/logo1.png" class="logo"></a>
+        <h1>First Gen Pokedex</h1>
 
-    <h1>First Gen Pokedex</h1>
+            <input id="search" type="search" placeholder="Suche Pokemon">
 
-    <input id="search" type="search" placeholder="Suche Pokemon">
-
-    <div id="content">
-        <div id="buttonBox" class="buttonBox"><button class="loadButton" onclick="moreButton()">
-                <h3>Load More</h3>
-            </button></div>
-    </div>
-
-    <div id="loadingSpinner" class="loadingSpinner"><img class="spinner" src="./assets/img/pokemonSpinner.png">
-        <div class="spinnerText">Loading ...</div>
-    </div>
-
-    <section onclick="hidePokedex()" class="overlay" id="overlay">
-
-        <div class="pokedexLeft">
-
-            <div class="alarmButtons">
-                <div class="glowing-circle"></div>
-                <div class="roundButton red"></div>
-                <div class="roundButton yellow"></div>
-                <div class="roundButton green"></div>
-            </div>
-
-            <div id="screen" class="screen"></div>
-
-            <div class="controlButtons">
-                <div id="backExitButton" class="backExitButton" onclick="hidePokedex()">Esc</div>
-
-                <div id="greenInfoBox" class="greenInfoBox"></div>
-
-                <div class="dPad">
-                    <div class="dPadUp" onclick="increasePokeScreen()">&lt;</div>
-                    <div class="dPadDown" onclick="decreasePokeScreen()">&gt;</div>
-                    <div class="dPadLeft" id="dPadLeft">&lt;</div>
-                    <div class="dPadRight" id="dPadRight">&gt;</div>
-                    <div class="dPadCenter"></div>
-                </div>
-            </div>
+        <div id="content">
+            <div id="buttonBox" class="buttonBox"><button class="loadButton" onclick="moreButton()">
+                    <h3>Load More</h3>
+                </button></div>
         </div>
 
-        <div class="pokedexMid"></div>
+        <div id="loadingSpinner" class="loadingSpinner"><img class="spinner" src="./assets/img/pokemonSpinner.png">
+            <div class="spinnerText">Loading ...</div>
+        </div>
 
-        <div class="pokedexRight">
+        <section onclick="hidePokedex()" class="overlay" id="overlay">
 
-            <div class="blackInfoBox">
+            <div class="pokedex">
+                <div class="pokedexLeft">
 
-                <div class="loadingScreen" id="loadingScreen">
-                    <div class="loader">
-                        <div class="loadingText">Loading ...</div>
+                    <div class="alarmButtons">
+                        <div class="glowing-circle"></div>
+                        <div class="roundButton red"></div>
+                        <div class="roundButton yellow"></div>
+                        <div class="roundButton green"></div>
+                    </div>
+
+                    <div id="screen" class="screen"></div>
+
+                    <div class="controlButtons">
+                        <div id="backExitButton" class="backExitButton" onclick="hidePokedex()">Esc</div>
+
+                        <div id="greenInfoBox" class="greenInfoBox"></div>
+
+                        <div class="dPad">
+                            <div class="dPadUp" onclick="increasePokeScreen()">&lt;</div>
+                            <div class="dPadDown" onclick="decreasePokeScreen()">&gt;</div>
+                            <div class="dPadLeft" id="dPadLeft">&lt;</div>
+                            <div class="dPadRight" id="dPadRight">&gt;</div>
+                            <div class="dPadCenter"></div>
+                        </div>
                     </div>
                 </div>
 
-                <div id="barBox" class="barBox"></div>
-            </div>
+                <div class="pokedexMid"></div>
 
-            <div class="solarPanel">
-                <div class="solar"></div>
-                <div class="solar"></div>
-                <div class="solar"></div>
-                <div class="solar"></div>
-                <div class="solar"></div>
-                <div class="solar"></div>
-                <div class="solar"></div>
-                <div class="solar"></div>
-                <div class="solar"></div>
-                <div class="solar"></div>
-            </div>
+                <div class="pokedexRight">
 
-            <div class="cosmeticButtons">
-                <div class="cosmeticDiv">
-                    <div class="fakeButton"></div>
-                    <div class="fakeButton"></div>
+                    <div class="blackInfoBox">
+
+                        <div class="loadingScreen" id="loadingScreen">
+                            <div class="loader">
+                                <div class="loadingText">Loading ...</div>
+                            </div>
+                        </div>
+
+                        <div id="barBox" class="barBox"></div>
+                    </div>
+
+                    <div class="solarPanel">
+                        <div class="solar"></div>
+                        <div class="solar"></div>
+                        <div class="solar"></div>
+                        <div class="solar"></div>
+                        <div class="solar"></div>
+                        <div class="solar"></div>
+                        <div class="solar"></div>
+                        <div class="solar"></div>
+                        <div class="solar"></div>
+                        <div class="solar"></div>
+                    </div>
+
+                    <div class="cosmeticButtons">
+                        <div class="cosmeticDiv">
+                            <div class="fakeButton"></div>
+                            <div class="fakeButton"></div>
+                        </div>
+                        <div class="cosmeticDiv">
+                            <div class="grayRectangle"></div>
+                            <div class="grayRectangle"></div>
+                        </div>
+                        <div class="cosmeticDiv">
+                            <div class="whiteSquare"></div>
+                            <div class="whiteSquare"></div>
+                        </div>
+                        <div class="cosmeticDiv">
+                            <div class="orangeCircle"></div>
+                        </div>
+                    </div>
+
+                    <div class="switchBoxes">
+                        <div class="statChangeBox" id="statButton">Stats</div>
+                        <div class="statChangeBox" id="evolutionButton">Evolution</div>
+                    </div>
                 </div>
-                <div class="cosmeticDiv">
-                    <div class="grayRectangle"></div>
-                    <div class="grayRectangle"></div>
-                </div>
-                <div class="cosmeticDiv">
-                    <div class="whiteSquare"></div>
-                    <div class="whiteSquare"></div>
-                </div>
-                <div class="cosmeticDiv">
-                    <div class="orangeCircle"></div>
-                </div>
             </div>
+        </section>
 
-            <div class="switchBoxes">
-                <div class="statChangeBox" id="statButton">Stats</div>
-                <div class="statChangeBox" id="evolutionButton">Evolution</div>
-            </div>
-        </div>
-
-    </section>
-
+    </main>
+    <footer>
+        <a class="footerLink" href="./impressum.html">Impressum</a>
+        <a class="footerLink" href="./datenschutz.html">Datenschutz</a>
+    </footer>
     <script src="./assets/scripts/templates.js"></script>
     <script src="./assets/scripts/script.js"></script>
 </body>

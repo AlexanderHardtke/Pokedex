@@ -75,6 +75,11 @@ function colorPokedex(i) {
 }
 
 function showPokedex() {
+    if (!hasPlayed) {
+        hasPlayed = true;
+        beat.volume = 0.1
+        beat.play();
+    }
     document.getElementById('overlay').classList.add('showOverlay');
     document.body.classList.add('noScroll');
 }
@@ -83,6 +88,7 @@ function hidePokedex() {
     if (event.target.id === 'overlay' || event.target.id === 'backExitButton') {
         document.getElementById('overlay').classList.remove('showOverlay');
         document.body.classList.remove('noScroll');
+        hasPlayed = false;
     }
 }
 

@@ -1,3 +1,10 @@
+.pokedex {
+    width: 850px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .pokedexLeft {
     display: flex;
     flex-direction: column;
@@ -5,7 +12,7 @@
     justify-content: space-evenly;
     z-index: 2;
     background-image: linear-gradient(to bottom right, rgb(227, 27, 31), rgb(222, 62, 62));
-    width: 80%;
+    width: 50%;
     max-width: 400px;
     aspect-ratio: 5.5 / 8;
     border: solid 6px #000000;
@@ -13,8 +20,8 @@
 
 .pokedexMid {
     background-color: rgb(98, 12, 13);
-    width: 2.5%;
-    height: 75%;
+    width: 1%;
+    height: 554px;
     border: 2mm ridge rgba(98, 12, 13, .6);
 }
 
@@ -221,7 +228,7 @@ p {
 .pokedexRight {
     z-index: 2;
     background-image: linear-gradient(to bottom right, rgb(227, 27, 31), rgb(222, 62, 62));
-    width: 80%;
+    width: 50%;
     max-width: 400px;
     aspect-ratio: 5.5 / 8;
     border: solid 6px #000000;
