@@ -4,6 +4,12 @@ body {
     font-size: 18px;
 }
 
+.wrapper {
+    max-width: 1920px;
+    margin: 0 auto;
+    position: relative;
+}
+
 main {
     background-color: #01033c;
     padding-left: 80px;
