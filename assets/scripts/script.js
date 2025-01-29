@@ -1,3 +1,11 @@
+/**
+ * This function gets all arrays from the next 30 Pokemon into an Array
+ * While this function is loading you activate showLoadingSpinner()
+ * 
+ * @param {number} index - This number is the index-Number of all Pokemon that are already loaded
+ * 
+ */
+
 async function fetchPokeAPI(index) {
     showLoadingSpinner();
     for (let i = 1; i < 31; i++) {
@@ -9,20 +17,37 @@ async function fetchPokeAPI(index) {
     hideLoadingSpinner();
 }
 
+/**
+ * This function initializes after loading the body of the Web-page
+ * 
+ */
 function init() {
     fetchPokeAPI(index);
 }
 
+/**
+ * This function shows the loading screen and hinders all the interactions from the user to the page
+ * 
+ */
 function showLoadingSpinner() {
     document.getElementById('loadingSpinner').classList.add('showOverlay');
     document.body.classList.add('noScroll');
 }
 
+/**
+ * This function hides the loading screen and reactivates all the interactions from the user to the page
+ * 
+ */
 function hideLoadingSpinner() {
     document.getElementById('loadingSpinner').classList.remove('showOverlay');
     document.body.classList.remove('noScroll');
 }
 
+/**
+ * This function gets the type of Pokemon out of the array and checks if it has a secondary type, it also converts the height and weight into decimals
+ * 
+ * @param {Array} pokemon 
+ */
 function getPokemonInfo(pokemon) {
     let type1 = pokemon.types[0].type;
     let type2 = pokemon.types.length > 1 ? pokemon.types[1].type : { name: "" };
@@ -32,11 +57,23 @@ function getPokemonInfo(pokemon) {
     colorCard(pokemon, type1);
 }
 
+/**
+ * This function takes the parameter divides it by 10 and returns it with a , instead of .
+ * 
+ * @param {number} i 
+ * @returns {string}
+ */
 function formatDecimals(i) {
     let formatDecimals = (i / 10).toFixed(1).replace('.', ',');
     return formatDecimals;
 }
 
+/**
+ * This function gets the 
+ * 
+ * @param {Array} card 
+ * @param {string} i 
+ */
 function colorCard(card, i) {
     let color = i['name'];
     let colorCode = colors[color];
@@ -211,5 +248,3 @@ document.getElementById('search').addEventListener('input', function () {
         searchPokemonNames(this.value);
     }, 300);
 });
-
-//  Language maybe
